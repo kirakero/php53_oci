@@ -7,12 +7,6 @@ RUN apt-get update && \
     apt-get install -y \
     curl wget unzip libaio-dev make build-essential
 
-
-# Oracle instantclient
-ADD instantclient-10.2.0.5.0/instantclient-basic-10.2.0.5.0-linux.zip /usr/local/src/
-ADD instantclient-10.2.0.5.0/instantclient-sdk-10.2.0.5.0-linux.zip /usr/local/src/
-# PECL OCI8
-COPY oci8-1.4.10.tar /usr/local/src/
 # PHP
 RUN cd /usr/local/src && \
     wget -O php-5.3.29.tar.gz http://de1.php.net/get/php-5.3.29.tar.gz/from/this/mirror --no-check-certificate
@@ -37,6 +31,7 @@ RUN apt-get -y install php5-dev
 # PECL OCI8
 COPY oci8-1.4.3.tgz /usr/local/src/
 
+# Oracle instantclient
 ADD instantclient-10.2.0.5.0/* /usr/local/src/
 
 RUN apt-get install -y gcc-multilib libc6-dev linux-libc-dev
